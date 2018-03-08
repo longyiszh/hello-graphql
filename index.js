@@ -63,6 +63,10 @@ const schema = buildSchema(`
     color: String
     level: Float
   }
+
+  type Mutation {
+    tame(id: String!): ScaryCat
+  }
 `);
 
 const getCat = (args) => {
@@ -85,9 +89,20 @@ const getCats = (args) => {
   }
 };
 
+const tame = ({id}) => {
+  for (let cat of data) {
+    if (cat.id === id) {
+      cat.level -= Math.floor(Math.random()*10);
+      console.log(cat);
+      return cat;
+    }
+  }
+};
+
 const root = {
   cat: getCat,
-  cats: getCats
+  cats: getCats,
+  tame: tame
 };
 
 

@@ -1,3 +1,10 @@
+fragment catFields on ScaryCat {
+  id
+  name
+  color
+  level
+}
+
 query getBunchCats($catID1: String!, $catID2: String!) {
   
   cat1: cat(id: $catID1) {
@@ -10,11 +17,10 @@ query getBunchCats($catID1: String!, $catID2: String!) {
 
 }
 
-fragment catFields on ScaryCat {
-  id
-  name
-  color
-  level
+mutation tame($catId: String!) {
+  tame(id: $catId) {
+    ...catFields
+  }
 }
 
 # Execution: 
