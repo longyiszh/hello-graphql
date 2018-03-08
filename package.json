@@ -1,0 +1,25 @@
+{
+  "name": "hello-graphql",
+  "version": "1.0.0",
+  "description": "learning graphql",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/longyiszh/hello-graphql.git"
+  },
+  "author": "longyiszh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/longyiszh/hello-graphql/issues"
+  },
+  "homepage": "https://github.com/longyiszh/hello-graphql#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.12",
+    "graphql": "^0.13.1"
+  }
+}
