@@ -1,0 +1,24 @@
+query getBunchCats($catID1: String!, $catID2: String!) {
+  
+  cat1: cat(id: $catID1) {
+    ...catFields
+  },
+  
+  cat2: cat(id: $catID2) {
+    ...catFields
+  }
+
+}
+
+fragment catFields on ScaryCat {
+  id
+  name
+  color
+  level
+}
+
+# Execution: 
+# { 
+#   "catID1":"0x000002",
+#   "catID2":"0x000004"
+# }

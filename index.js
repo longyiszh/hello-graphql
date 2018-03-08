@@ -5,15 +5,92 @@ const eg = require('express-graphql');
 
 const { buildSchema } = require('graphql');
 
+
+const data = [
+  {
+    id: "0x000001",
+    name: "叫叫猫",
+    color: "orange",
+    level: 5.0
+  },
+  {
+    id: "0x000002",
+    name: "疯猫猫",
+    color: "white",
+    level: 11.1
+  },
+  {
+    id: "0x000003",
+    name: "龙飞凤舞猫",
+    color: "yellow",
+    level: 8.1
+  },
+  {
+    id: "0x000004",
+    name: "小肉坨",
+    color: "white",
+    level: 3.0
+  },
+  {
+    id: "0x000005",
+    name: "史诗爪骨兽",
+    color: "yellow",
+    level: 222.0
+  },
+  {
+    id: "0x000006",
+    name: "橘橘虎",
+    color: "orange",
+    level: 0.5
+  },
+  {
+    id: "0x000007",
+    name: "超萌小猫猫",
+    color: "white",
+    level: -0.1
+  }
+];
+
 const schema = buildSchema(`
   type Query {
-    message: String
+    cat(id: String!): ScaryCat
+    cats(color: String): [ScaryCat]
+  }
+
+  type ScaryCat {
+    id: String
+    name: String
+    color: String
+    level: Float
   }
 `);
 
-const root = {
-  message: () => 'GraphQL Works!'
+const getCat = (args) => {
+  let id = args.id;
+  let metCats = data.filter((cat) => {
+    return cat.id === id;
+  });
+  return metCats[0];
 };
+
+const getCats = (args) => {
+  if (args.color) {
+    let color = args.color;
+    return data.filter((cat) => {
+      return cat.color === color;
+    });
+
+  } else {
+    return data;
+  }
+};
+
+const root = {
+  cat: getCat,
+  cats: getCats
+};
+
+
 
 const app = express();
 
