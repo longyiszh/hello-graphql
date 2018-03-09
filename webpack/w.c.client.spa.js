@@ -12,7 +12,7 @@ let config = merge(baseConfig, {
   mode: "development",
 
   output: {
-    path: root('dist'),
+    path: root('dist/client'),
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
