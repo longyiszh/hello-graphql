@@ -1,0 +1,15 @@
+type Query {
+  getCat(id: String!): ScaryCat
+  getCats(color: String): [ScaryCat]
+}
+
+type ScaryCat {
+  id: String
+  name: String
+  color: String
+  level: Float
+}
+
+type Mutation {
+  tame(id: String!): ScaryCat
+}

@@ -46,6 +46,14 @@ let config = {
 
         ],
         exclude:  /node_modules/
+      },
+      {
+        test: /\.graphql|\.gql$/,
+        use: [
+          {
+            loader: 'raw-loader'
+          }
+        ]
       }
 
     ]
