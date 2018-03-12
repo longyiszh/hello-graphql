@@ -68,8 +68,15 @@
     "webpack-node-externals": "^1.6.0"
   },
   "optionalDependencies": {
+    "apollo-cache-inmemory": "^1.1.10",
+    "apollo-client": "^2.2.6",
+    "apollo-link": "^1.2.1",
+    "apollo-link-context": "^1.0.7",
+    "apollo-link-http": "^1.5.3",
     "babel-polyfill": "^6.26.0",
+    "graphql-tag": "^2.8.0",
     "vue": "^2.5.13",
+    "vue-apollo": "^3.0.0-beta.5",
     "vue-class-component": "^6.2.0",
     "vue-router": "^3.0.1"
   }

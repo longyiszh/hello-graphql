@@ -10,33 +10,27 @@ import * as cors from "@koa/cors";
 
 import { api } from './router/api';
 
-export class Server {
 
-  app = new Koa();
-  router = new Router();
+const app = new Koa();
+const router = new Router();
 
-  clientPath = join(__dirname, "../client");
+const clientPath = join(__dirname, "../client");
 
-  constructor() {
-    this.app.use(logger());
-    this.app.use(bodyParser());
-    this.app.use(cors());
+app.use(logger());
+app.use(bodyParser());
+app.use(cors());
 
-    this.router.use('/api', api.routes(), api.allowedMethods())
-    // this.router.get('/*', async (ctx) => {
-    //   await send(ctx, join(this.clientPath, 'index.html'), { root: '/' });
-    // });
+router.use('/api', api.routes(), api.allowedMethods())
+router.get('/*', async (ctx) => {
+  await send(ctx, join(clientPath, 'index.html'), { root: '/' });
+});
 
-    this.app.use(this.router.routes())
-    .use(this.router.allowedMethods());
+app.use(serve(clientPath));
 
-    // listen
-    this.app.listen(3000, () => {
-      console.log("** koa started on port 3000. **");
-    });
+app.use(router.routes())
+.use(router.allowedMethods());
 
-  }
-
-}
-
-new Server();
+// listen
+app.listen(3000, () => {
+  console.log("** koa started on port 3000. **");
+});

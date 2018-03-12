@@ -18,6 +18,16 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
 
+    <div class="graphql">
+      graphQL:
+      <div v-if="scaryCat">
+        <p>id: {{ scaryCat.id }}</p>
+        <p>name: {{ scaryCat.name }}</p>
+        <p>color: {{ scaryCat.color }}</p>
+        <p>level: {{ scaryCat.level }}</p>
+      </div>
+    </div>
+
   </section>
 </template>
 
@@ -54,10 +64,31 @@
   import Vue from 'vue';
   import Component from 'vue-class-component';
 
+  import gql from 'graphql-tag';
+
   @Component({
-    name: 'index'
+    name: 'index',
+    apollo: {
+
+      scaryCat: gql`{
+        scaryCat: getCat(id: "0x000005") {
+          id
+          name
+          color
+          level
+        }
+      }`
+
+    }
   })
   export default class Index extends Vue {
-    msg: string = 'Welcome to hello-graphql!'
+    msg: string = 'Welcome to hello-graphql!';
+
+    scaryCat: any = {};
+
+    created() {
+      
+    }
+
   }
 </script>
