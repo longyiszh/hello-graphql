@@ -1,0 +1,6 @@
+fragment catFields on ScaryCat {
+  id
+  name
+  color
+  level
+}

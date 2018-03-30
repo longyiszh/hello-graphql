@@ -2,8 +2,10 @@ import { readFileSync } from 'fs';
 
 import { makeExecutableSchema } from 'graphql-tools';
 
+import * as typeDefs from './type.graphql';
+
 class ScaryCat {
-  typeDefs: string = require('./type.graphql');
+  // typeDefs: string = require('./type.graphql');
 
   data: any[] = [
     {
@@ -98,7 +100,8 @@ class ScaryCat {
   get schema() {
     // Put together a schema
     return makeExecutableSchema({
-      typeDefs: this.typeDefs,
+      // typeDefs: this.typeDefs,
+      typeDefs,
       resolvers: this.resolvers
     });
   }

@@ -7,11 +7,11 @@ fragment catFields on ScaryCat {
 
 query getBunchCats($catID1: String!, $catID2: String!) {
   
-  cat1: cat(id: $catID1) {
+  cat1: getCat(id: $catID1) {
     ...catFields
   },
   
-  cat2: cat(id: $catID2) {
+  cat2: getCat(id: $catID2) {
     ...catFields
   }
 
@@ -22,6 +22,9 @@ mutation tame($catId: String!) {
     ...catFields
   }
 }
+
+${catID1}
+${catID2}
 
 # Execution: 
 # { 

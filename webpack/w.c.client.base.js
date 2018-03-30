@@ -67,6 +67,11 @@ let config = {
             use: ['css-loader?sourceMap', 'postcss-loader', "sass-loader"]
           }
         )
+      },
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        use: 'graphql-tag/loader'
       }
     ]
   },

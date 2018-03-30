@@ -49,13 +49,9 @@ let config = {
       },
       {
         test: /\.graphql|\.gql$/,
-        use: [
-          {
-            loader: 'raw-loader'
-          }
-        ]
+        exclude: /node_modules/,
+        use: 'graphql-tag/loader'
       }
-
     ]
   },
 

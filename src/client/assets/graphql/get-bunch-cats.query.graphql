@@ -1,0 +1,13 @@
+#import "./scary-cat.fragment.graphql"
+
+query getBunchCats($catID1: String!, $catID2: String!) {
+  
+  cat1: getCat(id: $catID1) {
+    ...catFields
+  },
+  
+  cat2: getCat(id: $catID2) {
+    ...catFields
+  }
+
+}
